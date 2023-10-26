@@ -1,0 +1,28 @@
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity ^0.8;
+contract Student_management
+{
+struct Student
+{
+int rollno;
+string name;
+string department;
+}
+Student[] S1;
+function accept(int rollno,string memory name, string memory department) public
+{
+Student memory stud1 = Student(rollno,name,department);
+S1.push(stud1);
+}
+function display(int rollno) public view returns(string memory, string memory){
+for(uint i=0;i<S1.length;i++)
+{
+Student memory stud = S1[i];
+if(stud.rollno==rollno)
+{
+return(stud.name,stud.department);
+}
+}
+return("Not Found", "Not Found");
+}
+}
